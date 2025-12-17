@@ -1,0 +1,237 @@
+:root{
+  --ink:#1c2a33;
+  --line:#7aa7ff55;
+  --box:#0f22300f;
+  --stroke:#123a4a55;
+  --accent:#e64a4a;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  color:var(--ink);
+}
+
+.paper{
+  min-height:100vh;
+  padding:18px 18px 26px;
+  background:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-color:#fbfcff;
+}
+
+.topbar{ margin-bottom:14px; }
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo{
+  width:54px;height:54px;
+  border:2px solid var(--stroke);
+  border-radius:14px;
+  background:#fff;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  box-shadow: 0 8px 18px rgba(0,0,0,.06);
+}
+.logo img{width:100%;height:100%;object-fit:cover}
+
+.brand-title{
+  font-size:28px;
+  font-weight:900;
+  letter-spacing:-.02em;
+}
+.brand-sub{
+  margin-top:2px;
+  font-size:12px;
+  color:#567;
+}
+
+.layout{
+  display:grid;
+  grid-template-columns: 1fr 360px;
+  gap:18px;
+  align-items:start;
+}
+
+.map-frame{
+  border:3px solid #2b7cffaa;
+  border-radius:18px;
+  background:#fff;
+  box-shadow: 0 16px 30px rgba(0,0,0,.08);
+  overflow:hidden;
+}
+
+#map{
+  width:100%;
+  height: 620px;
+}
+
+.hint{
+  margin-top:10px;
+  font-size:12px;
+  color:#567;
+}
+
+.side{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.card{
+  border:2px solid var(--stroke);
+  border-radius:18px;
+  background: var(--box);
+  padding:12px 14px;
+  box-shadow: 0 12px 22px rgba(0,0,0,.05);
+}
+
+.card-title{
+  font-weight:900;
+  margin-bottom:6px;
+}
+
+.card-body{
+  margin:0;
+  font-size:14px;
+  line-height:1.55;
+  word-break: keep-all;
+}
+.list{ padding-left:18px; }
+.list li{ margin:4px 0; }
+
+/* 원인 표 */
+.cause-table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  overflow:hidden;
+  border-radius:14px;
+  background:#fff;
+  border:1px solid #00000014;
+}
+.cause-table th,
+.cause-table td{
+  text-align:left;
+  padding:10px 10px;
+  font-size:13px;
+  line-height:1.45;
+  border-bottom:1px solid #00000010;
+  vertical-align:top;
+}
+.cause-table th{
+  font-weight:900;
+  background:#f7f9ff;
+}
+.cause-table tr:last-child td{ border-bottom:none; }
+.cause-table td:first-child{
+  width:64px;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+/* 커스텀 느낌표 마커 */
+.alert-marker{
+  width:34px;height:34px;
+  background:var(--accent);
+  border:3px solid #fff;
+  border-radius:12px 12px 18px 18px;
+  box-shadow: 0 10px 20px rgba(0,0,0,.18);
+  display:grid;
+  place-items:center;
+  position:relative;
+}
+.alert-marker::after{
+  content:"";
+  position:absolute;
+  bottom:-10px; left:50%;
+  transform:translateX(-50%);
+  width:0;height:0;
+  border-left:10px solid transparent;
+  border-right:10px solid transparent;
+  border-top:12px solid var(--accent);
+  filter: drop-shadow(0 6px 6px rgba(0,0,0,.15));
+}
+.alert-marker span{
+  color:#fff;
+  font-weight:1000;
+  font-size:18px;
+  transform: translateY(-1px);
+}
+
+/* 모달 */
+.modal{
+  position:fixed; inset:0;
+  display:none;
+  place-items:center;
+  z-index:9999;
+}
+.modal[aria-hidden="false"]{ display:grid; }
+
+.modal-backdrop{
+  position:absolute; inset:0;
+  background: rgba(0,0,0,.45);
+}
+
+.modal-card{
+  position:relative;
+  width:min(860px, 92vw);
+  background:#fff;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow: 0 22px 60px rgba(0,0,0,.28);
+  border:1px solid #00000020;
+}
+
+.modal-close{
+  position:absolute;
+  top:10px; right:12px;
+  width:40px; height:40px;
+  border-radius:12px;
+  border:1px solid #00000018;
+  background:#fff;
+  font-size:24px;
+  cursor:pointer;
+}
+
+.modal-head{
+  padding:16px 18px 10px;
+  border-bottom:1px solid #00000012;
+}
+.modal-title{
+  font-weight:1000;
+  font-size:18px;
+}
+.modal-desc{
+  margin-top:4px;
+  font-size:13px;
+  color:#567;
+}
+
+.modal-body{
+  padding:12px;
+  background:#fafbff;
+}
+.modal-body img{
+  width:100%;
+  height:auto;
+  display:block;
+  max-height: 70vh;
+  object-fit: contain;v
+  border-radius:14px;
+  border:1px solid #00000012;
+}
+
+/* 반응형 */
+@media (max-width: 980px){
+  .layout{ grid-template-columns: 1fr; }
+  #map{ height:520px; }
+}

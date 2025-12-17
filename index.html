@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>물길 살핌</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+    defer
+  ></script>
+
+  <link rel="stylesheet" href="./style.css" />
+  <script src="./app.js" defer></script>
+</head>
+
+<body>
+  <div class="paper">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">
+          <img id="logoImg" src="./assets/logo.png" alt="물길 살핌 로고" />
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">물길 살핌이</div>
+          <div class="brand-sub">하수도 점검 지도</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="map-panel">
+        <div class="map-frame">
+          <div id="map"></div>
+        </div>
+        <div class="hint">※ 느낌표 마커를 클릭하면 해당 지점 사진과 원인을 확인할 수 있습니다.</div>
+      </section>
+
+      <aside class="side">
+        <div class="card">
+          <div class="card-title">소개</div>
+          <p class="card-body">
+            지도 위에 하수도 점검 지점을 표시하고, 느낌표 마커를 클릭하면 현장 사진과 막힘 원인을 확인할 수 있습니다.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-title">사용법</div>
+          <ul class="card-body list">
+            <li>느낌표 마커 클릭</li>
+            <li>사진 확인</li>
+            <li>막힘 원인 확인</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-title">막힘 원인 요약</div>
+
+          <table class="cause-table" aria-label="막힘 원인 요약 표">
+            <thead>
+              <tr>
+                <th>지점</th>
+                <th>사진에서 보이는 원인</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1번</td>
+                <td>낙엽이 배수구(그릴) 주변에 다량으로 쌓여 유입을 막는 형태</td>
+              </tr>
+              <tr>
+                <td>2번</td>
+                <td>관 내부에 낙엽/유기물성 찌꺼기가 뭉쳐 쌓여 흐름을 막는 형태</td>
+              </tr>
+              <tr>
+                <td>3번</td>
+                <td>보도 턱 배수구 주변에 낙엽과 풀(잔디) 조각이 함께 쌓인 형태</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <!-- 사진 모달 -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" data-close="1"></div>
+    <div class="modal-card" role="document">
+      <button class="modal-close" id="modalClose" aria-label="닫기">×</button>
+      <div class="modal-head">
+        <div id="modalTitle" class="modal-title">지점</div>
+        <div id="modalDesc" class="modal-desc"></div>
+      </div>
+      <div class="modal-body">
+        <img id="modalImg" alt="지점 사진" />
+      </div>
+    </div>
+  </div>
+</body>
+</html>
