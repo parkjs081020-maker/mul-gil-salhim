@@ -1,9 +1,13 @@
 :root{
-  --ink:#1c2a33;
-  --line:#7aa7ff55;
-  --box:#0f22300f;
-  --stroke:#123a4a55;
-  --accent:#e64a4a;
+  /* 다크 테마 팔레트 */
+  --bg:#0b0f14;            /* 전체 배경(검정) */
+  --grid:rgba(255,255,255,.06);
+  --ink:#e6edf3;           /* 기본 글씨 */
+  --muted:#9aa4b2;         /* 보조 글씨 */
+  --stroke:rgba(255,255,255,.18);
+  --card:#111827;          /* 카드 배경 */
+  --card2:#0f172a;         /* 살짝 더 진한 배경 */
+  --accent:#ff4d4d;        /* 느낌표 빨강 */
 }
 
 *{box-sizing:border-box}
@@ -11,16 +15,18 @@ body{
   margin:0;
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
   color:var(--ink);
+  background:var(--bg);
 }
 
+/* 종이 격자 느낌(검정 배경용) */
 .paper{
   min-height:100vh;
   padding:18px 18px 26px;
   background:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
   background-size: 28px 28px;
-  background-color:#fbfcff;
+  background-color: var(--bg);
 }
 
 .topbar{ margin-bottom:14px; }
@@ -35,11 +41,11 @@ body{
   width:54px;height:54px;
   border:2px solid var(--stroke);
   border-radius:14px;
-  background:#fff;
+  background: var(--card);
   overflow:hidden;
   display:grid;
   place-items:center;
-  box-shadow: 0 8px 18px rgba(0,0,0,.06);
+  box-shadow: 0 10px 24px rgba(0,0,0,.55);
 }
 .logo img{width:100%;height:100%;object-fit:cover}
 
@@ -51,7 +57,7 @@ body{
 .brand-sub{
   margin-top:2px;
   font-size:12px;
-  color:#567;
+  color:var(--muted);
 }
 
 .layout{
@@ -62,10 +68,10 @@ body{
 }
 
 .map-frame{
-  border:3px solid #2b7cffaa;
+  border:3px solid rgba(90,160,255,.55);
   border-radius:18px;
-  background:#fff;
-  box-shadow: 0 16px 30px rgba(0,0,0,.08);
+  background: var(--card);
+  box-shadow: 0 18px 40px rgba(0,0,0,.55);
   overflow:hidden;
 }
 
@@ -77,7 +83,7 @@ body{
 .hint{
   margin-top:10px;
   font-size:12px;
-  color:#567;
+  color:var(--muted);
 }
 
 .side{
@@ -89,24 +95,26 @@ body{
 .card{
   border:2px solid var(--stroke);
   border-radius:18px;
-  background: var(--box);
+  background: rgba(17,24,39,.88); /* 카드 살짝 투명하게 */
   padding:12px 14px;
-  box-shadow: 0 12px 22px rgba(0,0,0,.05);
+  box-shadow: 0 14px 30px rgba(0,0,0,.55);
 }
 
 .card-title{
   font-weight:900;
   margin-bottom:6px;
+  color:var(--ink);
 }
 
 .card-body{
   margin:0;
   font-size:14px;
   line-height:1.55;
+  color:var(--ink);
   word-break: keep-all;
 }
 .list{ padding-left:18px; }
-.list li{ margin:4px 0; }
+.list li{ margin:4px 0; color:var(--ink); }
 
 /* 원인 표 */
 .cause-table{
@@ -115,8 +123,8 @@ body{
   border-spacing:0;
   overflow:hidden;
   border-radius:14px;
-  background:#fff;
-  border:1px solid #00000014;
+  background: var(--card2);
+  border:1px solid rgba(255,255,255,.12);
 }
 .cause-table th,
 .cause-table td{
@@ -124,27 +132,29 @@ body{
   padding:10px 10px;
   font-size:13px;
   line-height:1.45;
-  border-bottom:1px solid #00000010;
+  border-bottom:1px solid rgba(255,255,255,.10);
   vertical-align:top;
+  color:var(--ink);
 }
 .cause-table th{
   font-weight:900;
-  background:#f7f9ff;
+  background: rgba(255,255,255,.06);
 }
 .cause-table tr:last-child td{ border-bottom:none; }
 .cause-table td:first-child{
   width:64px;
   font-weight:900;
   white-space:nowrap;
+  color:#cfe3ff;
 }
 
 /* 커스텀 느낌표 마커 */
 .alert-marker{
   width:34px;height:34px;
   background:var(--accent);
-  border:3px solid #fff;
+  border:3px solid rgba(255,255,255,.95);
   border-radius:12px 12px 18px 18px;
-  box-shadow: 0 10px 20px rgba(0,0,0,.18);
+  box-shadow: 0 12px 22px rgba(0,0,0,.55);
   display:grid;
   place-items:center;
   position:relative;
@@ -158,7 +168,7 @@ body{
   border-left:10px solid transparent;
   border-right:10px solid transparent;
   border-top:12px solid var(--accent);
-  filter: drop-shadow(0 6px 6px rgba(0,0,0,.15));
+  filter: drop-shadow(0 8px 10px rgba(0,0,0,.55));
 }
 .alert-marker span{
   color:#fff;
@@ -178,17 +188,17 @@ body{
 
 .modal-backdrop{
   position:absolute; inset:0;
-  background: rgba(0,0,0,.45);
+  background: rgba(0,0,0,.62);
 }
 
 .modal-card{
   position:relative;
   width:min(860px, 92vw);
-  background:#fff;
+  background: var(--card);
   border-radius:18px;
   overflow:hidden;
-  box-shadow: 0 22px 60px rgba(0,0,0,.28);
-  border:1px solid #00000020;
+  box-shadow: 0 26px 70px rgba(0,0,0,.75);
+  border:1px solid rgba(255,255,255,.14);
 }
 
 .modal-close{
@@ -196,38 +206,61 @@ body{
   top:10px; right:12px;
   width:40px; height:40px;
   border-radius:12px;
-  border:1px solid #00000018;
-  background:#fff;
+  border:1px solid rgba(255,255,255,.16);
+  background: rgba(0,0,0,.25);
+  color: var(--ink);
   font-size:24px;
   cursor:pointer;
 }
 
 .modal-head{
   padding:16px 18px 10px;
-  border-bottom:1px solid #00000012;
+  border-bottom:1px solid rgba(255,255,255,.12);
 }
 .modal-title{
   font-weight:1000;
   font-size:18px;
+  color: var(--ink);
 }
 .modal-desc{
   margin-top:4px;
   font-size:13px;
-  color:#567;
+  color:var(--muted);
 }
 
 .modal-body{
   padding:12px;
-  background:#fafbff;
+  background: rgba(0,0,0,.18);
 }
 .modal-body img{
+  display:block;
   width:100%;
   height:auto;
-  display:block;
-  max-height: 70vh;
-  object-fit: contain;v
+  max-height: 70vh;     /* 너무 커지지 않게 */
+  object-fit: contain;
+
   border-radius:14px;
-  border:1px solid #00000012;
+  border:1px solid rgba(255,255,255,.12);
+}
+
+/* Leaflet(지도 UI) 다크톤 보정 */
+.leaflet-control-zoom a{
+  background: rgba(17,24,39,.92) !important;
+  color: var(--ink) !important;
+  border:1px solid rgba(255,255,255,.14) !important;
+}
+.leaflet-control-attribution{
+  background: rgba(0,0,0,.35) !important;
+  color: rgba(255,255,255,.75) !important;
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip{
+  background: rgba(17,24,39,.98) !important;
+  color: var(--ink) !important;
+  border:1px solid rgba(255,255,255,.14);
+}
+.leaflet-popup-content{
+  margin:12px 14px;
 }
 
 /* 반응형 */
