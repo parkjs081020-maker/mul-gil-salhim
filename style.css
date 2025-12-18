@@ -268,3 +268,10 @@ body{
   .layout{ grid-template-columns: 1fr; }
   #map{ height:520px; }
 }
+
+.report-title{
+  font-weight:1000;
+  font-size:16px;
+  text-align:center;
+  padding:10px 6px;
+}
