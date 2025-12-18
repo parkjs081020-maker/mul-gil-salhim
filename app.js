@@ -97,8 +97,9 @@ map.on("click", (e) => {
 
   L.popup()
     .setLatLng(e.latlng)
-    .setContent(`<b>좌표</b><br>${text}<br><small>(이 값 복사해서 2번 lat/lng에 넣기)</small>`)
+    .setContent(`<b>좌표</b><br>${text}<br><small>`)
     .openOn(map);
 
   console.log(text);
 });
+
