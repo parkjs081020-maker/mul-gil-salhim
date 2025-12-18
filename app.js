@@ -102,4 +102,3 @@ map.on("click", (e) => {
 
   console.log(text);
 });
-
